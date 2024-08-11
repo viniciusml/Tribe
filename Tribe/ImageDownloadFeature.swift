@@ -21,6 +21,7 @@ enum ImageDownload {
         
         enum State {
             case loading
+            case stillLoading
             case loaded(Data)
             case failed
         }

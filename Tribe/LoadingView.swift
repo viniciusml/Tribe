@@ -9,6 +9,12 @@ import SwiftUI
 
 struct LoadingView: View {
     
+    private let stillLoading: Bool
+    
+    init(stillLoading: Bool) {
+        self.stillLoading = stillLoading
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -19,6 +25,12 @@ struct LoadingView: View {
                 .scaleEffect(2)
                 .padding()
             
+            if stillLoading {
+                Text("Waiting for internet connection")
+                    .font(.headline)
+                    .padding(.top, 10)
+            }
+            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -27,5 +39,5 @@ struct LoadingView: View {
 }
 
 #Preview {
-    LoadingView()
+    LoadingView(stillLoading: false)
 }

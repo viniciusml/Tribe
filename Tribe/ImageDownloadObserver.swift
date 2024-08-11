@@ -27,7 +27,9 @@ extension ImageDownloadObserver: ImageDownloadScene {
         switch update {
         case .new(viewModel: let viewModel):
             self.viewModel = viewModel
-            objectWillChange.send()
+            DispatchQueue.main.async { [weak self] in
+                self?.objectWillChange.send()
+            }
         }
     }
 }

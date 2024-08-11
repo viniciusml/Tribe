@@ -20,8 +20,10 @@ struct ContentView: View {
             switch observer.viewModel.state {
             case .failed:
                 DownloadFailedView()
+            case .stillLoading:
+                LoadingView(stillLoading: true)
             case .loading:
-                LoadingView()
+                LoadingView(stillLoading: false)
             case .loaded(let data):
                 if let image = UIImage(data: data) {
                     ImageView(image: image)
