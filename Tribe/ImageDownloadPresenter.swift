@@ -15,22 +15,17 @@ final class ImageDownloadPresenter {
     func perform(_ action: ImageDownload.Action) {
         switch action {
         case .downloadImage:
-            performAfter(seconds: 5.0) { [weak self] in
-                self?.downloadImage()
-            }
+            downloadImage()
         }
     }
     
     private func downloadImage() {
-        let timerTask = Task {
-            try? await informWaitingForConnectivity(timeout: 0.5)
-        }
         Task { @MainActor in
+            await informWaitingForConnectivity(timeout: ImageDownload.Constant.visualInspectionTimeout)
             await NetworkOperationPerformer()
                 .perform(withinSeconds: ImageDownload.Constant.downloadTimeout) { [weak self] in
                     await self?.attemptToDownloadImage()
                 }
-            timerTask.cancel()
         }
     }
     
@@ -45,15 +40,14 @@ final class ImageDownloadPresenter {
         }
     }
     
-    private func informWaitingForConnectivity(timeout: TimeInterval) async throws {
-        try await Task.sleep(for: .seconds(timeout))
+    private func informWaitingForConnectivity(timeout: TimeInterval) async {
+        try? await Task.sleep(for: .seconds(ImageDownload.Constant.waitingForConnectivityTimeout))
         scene?.perform(.new(viewModel: .init(state: .stillLoading)))
+        try? await waitForVisualInspection(timeout: timeout - ImageDownload.Constant.waitingForConnectivityTimeout)
     }
     
     /// This method allows for the loading screen to be shown for 5 seconds to allow for enough time to visually test the behavior.
-    private func performAfter(seconds: TimeInterval, action: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: {
-            action()
-        })
+    private func waitForVisualInspection(timeout: TimeInterval) async throws {
+        try await Task.sleep(for: .seconds(timeout))
     }
 }
