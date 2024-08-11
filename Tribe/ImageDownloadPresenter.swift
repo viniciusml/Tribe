@@ -15,7 +15,9 @@ final class ImageDownloadPresenter {
     func perform(_ action: ImageDownload.Action) {
         switch action {
         case .downloadImage:
-            downloadImage()
+            performAfter(seconds: 5.0) { [weak self] in
+                self?.downloadImage()
+            }
         }
     }
     
@@ -33,5 +35,12 @@ final class ImageDownloadPresenter {
                     }
                 }
         }
+    }
+    
+    /// This method allows for the loading screen to be shown for 5 seconds to allow for enough time to visually test the behavior.
+    private func performAfter(seconds: TimeInterval, action: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: {
+            action()
+        })
     }
 }
