@@ -20,8 +20,8 @@ final class ImageDownloadPresenter {
     }
     
     private func downloadImage() {
-        Task {
-            await NetworkOperationPerformer(networkMonitor: FakeNetworkMonitor())
+        Task { @MainActor in
+            await NetworkOperationPerformer()
                 .perform(withinSeconds: ImageDownload.Constant.downloadTimeout) { [weak self] in
                     do {
                         let result = try await URLSession.shared.data(for: URLRequest(url: ImageDownload.Constant.imageURL))
@@ -33,12 +33,5 @@ final class ImageDownloadPresenter {
                     }
                 }
         }
-    }
-}
-
-private final class FakeNetworkMonitor: NetworkMonitoring {
-    
-    func hasInternetConnection() -> Bool {
-        false
     }
 }

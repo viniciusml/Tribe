@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:viniciusml/Lotus.git",
       "state" : {
-        "revision" : "3e88209cf756c08eb4b2530e0e799b5f9dfd7ed5",
-        "version" : "1.0.0"
+        "revision" : "c9ca86dac8a4becaae91ac9a17bec07581bdb13c",
+        "version" : "1.1.0"
       }
     }
   ],

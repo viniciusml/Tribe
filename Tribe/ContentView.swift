@@ -29,6 +29,8 @@ struct ContentView: View {
                     DownloadFailedView()
                 }
             }
+        }.onAppear {
+            observer.perform(.downloadImage)
         }
     }
 }

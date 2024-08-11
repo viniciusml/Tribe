@@ -15,6 +15,10 @@ final class ImageDownloadObserver: ObservableObject {
     init(presenter: ImageDownloadPresenter) {
         self.presenter = presenter
     }
+    
+    func perform(_ action: ImageDownload.Action) {
+        presenter.perform(action)
+    }
 }
 
 extension ImageDownloadObserver: ImageDownloadScene {
