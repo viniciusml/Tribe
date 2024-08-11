@@ -16,6 +16,10 @@
 		EC56CBEC2C6943CD00D2E9F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBEB2C6943CD00D2E9F1 /* LoadingView.swift */; };
 		EC56CBEE2C69464800D2E9F1 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBED2C69464800D2E9F1 /* ImageView.swift */; };
 		EC56CBF02C69487D00D2E9F1 /* DownloadFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBEF2C69487D00D2E9F1 /* DownloadFailedView.swift */; };
+		EC56CBF22C69497C00D2E9F1 /* ImageDownloadFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF12C69497C00D2E9F1 /* ImageDownloadFeature.swift */; };
+		EC56CBF42C694A0E00D2E9F1 /* ImageDownloadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF32C694A0E00D2E9F1 /* ImageDownloadPresenter.swift */; };
+		EC56CBF62C694D9C00D2E9F1 /* ImageDownloadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */; };
+		EC56CBF82C694E1300D2E9F1 /* ImageDownloadObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		EC56CBEB2C6943CD00D2E9F1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		EC56CBED2C69464800D2E9F1 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		EC56CBEF2C69487D00D2E9F1 /* DownloadFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFailedView.swift; sourceTree = "<group>"; };
+		EC56CBF12C69497C00D2E9F1 /* ImageDownloadFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadFeature.swift; sourceTree = "<group>"; };
+		EC56CBF32C694A0E00D2E9F1 /* ImageDownloadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadPresenter.swift; sourceTree = "<group>"; };
+		EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadScene.swift; sourceTree = "<group>"; };
+		EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,10 @@
 				EC56CBEB2C6943CD00D2E9F1 /* LoadingView.swift */,
 				EC56CBED2C69464800D2E9F1 /* ImageView.swift */,
 				EC56CBEF2C69487D00D2E9F1 /* DownloadFailedView.swift */,
+				EC56CBF12C69497C00D2E9F1 /* ImageDownloadFeature.swift */,
+				EC56CBF32C694A0E00D2E9F1 /* ImageDownloadPresenter.swift */,
+				EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */,
+				EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */,
 			);
 			path = Tribe;
 			sourceTree = "<group>";
@@ -215,9 +227,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC56CBEE2C69464800D2E9F1 /* ImageView.swift in Sources */,
+				EC56CBF82C694E1300D2E9F1 /* ImageDownloadObserver.swift in Sources */,
 				EC2E69872C68C1DC00B1C729 /* ContentView.swift in Sources */,
+				EC56CBF42C694A0E00D2E9F1 /* ImageDownloadPresenter.swift in Sources */,
 				EC56CBF02C69487D00D2E9F1 /* DownloadFailedView.swift in Sources */,
+				EC56CBF62C694D9C00D2E9F1 /* ImageDownloadScene.swift in Sources */,
 				EC2E69852C68C1DC00B1C729 /* TribeApp.swift in Sources */,
+				EC56CBF22C69497C00D2E9F1 /* ImageDownloadFeature.swift in Sources */,
 				EC56CBEC2C6943CD00D2E9F1 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

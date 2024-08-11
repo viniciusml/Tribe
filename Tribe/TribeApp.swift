@@ -10,8 +10,16 @@ import SwiftUI
 @main
 struct TribeApp: App {
     var body: some Scene {
+        
+        let imageDownloadPresenter = ImageDownloadPresenter()
+        lazy var imageDownloadObserver: ImageDownloadObserver = {
+            let observer = ImageDownloadObserver(presenter: imageDownloadPresenter)
+            imageDownloadPresenter.scene = observer
+            return observer
+        }()
+        
         WindowGroup {
-            ContentView()
+            ContentView(observer: imageDownloadObserver)
         }
     }
 }

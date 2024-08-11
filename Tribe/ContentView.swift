@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isLoading = true
+    @ObservedObject private var observer: ImageDownloadObserver
+    
+    init(observer: ImageDownloadObserver) {
+        self.observer = observer
+    }
     
     var body: some View {
         VStack {
-            if isLoading {
+            switch observer.viewModel.state {
+            case .failed:
+                DownloadFailedView()
+            case .loading:
                 LoadingView()
+            case .loaded(let data):
+                if let image = UIImage(data: data) {
+                    ImageView(image: image)
+                } else {
+                    DownloadFailedView()
+                }
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

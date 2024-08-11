@@ -9,9 +9,15 @@ import SwiftUI
 
 struct ImageView: View {
     
+    private let image: UIImage
+    
+    init(image: UIImage) {
+        self.image = image
+    }
+    
     var body: some View {
         VStack {
-            Image(uiImage: UIImage())
+            Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
@@ -29,5 +35,5 @@ struct ImageView: View {
 }
 
 #Preview {
-    ImageView()
+    ImageView(image: UIImage())
 }
