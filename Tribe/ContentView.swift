@@ -32,7 +32,9 @@ struct ContentView: View {
                 }
             }
         }.onAppear {
-            observer.perform(.downloadImage)
+            Task { @MainActor in
+                await observer.perform(.downloadImage)
+            }
         }
     }
 }

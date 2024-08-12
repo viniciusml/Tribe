@@ -16,8 +16,8 @@ final class ImageDownloadObserver: ObservableObject {
         self.presenter = presenter
     }
     
-    func perform(_ action: ImageDownload.Action) {
-        presenter.perform(action)
+    func perform(_ action: ImageDownload.Action) async {
+        await presenter.perform(action)
     }
 }
 

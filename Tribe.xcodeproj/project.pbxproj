@@ -11,7 +11,6 @@
 		EC2E69872C68C1DC00B1C729 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E69862C68C1DC00B1C729 /* ContentView.swift */; };
 		EC2E69892C68C1DD00B1C729 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2E69882C68C1DD00B1C729 /* Assets.xcassets */; };
 		EC2E698C2C68C1DD00B1C729 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2E698B2C68C1DD00B1C729 /* Preview Assets.xcassets */; };
-		EC2E69962C68C1DD00B1C729 /* TribeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E69952C68C1DD00B1C729 /* TribeTests.swift */; };
 		EC56CBEA2C69433600D2E9F1 /* Lotus in Frameworks */ = {isa = PBXBuildFile; productRef = EC56CBE92C69433600D2E9F1 /* Lotus */; };
 		EC56CBEC2C6943CD00D2E9F1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBEB2C6943CD00D2E9F1 /* LoadingView.swift */; };
 		EC56CBEE2C69464800D2E9F1 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBED2C69464800D2E9F1 /* ImageView.swift */; };
@@ -20,6 +19,7 @@
 		EC56CBF42C694A0E00D2E9F1 /* ImageDownloadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF32C694A0E00D2E9F1 /* ImageDownloadPresenter.swift */; };
 		EC56CBF62C694D9C00D2E9F1 /* ImageDownloadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */; };
 		EC56CBF82C694E1300D2E9F1 /* ImageDownloadObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */; };
+		EC56CBFA2C69661900D2E9F1 /* ImageDownloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		EC2E69882C68C1DD00B1C729 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC2E698B2C68C1DD00B1C729 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC2E69912C68C1DD00B1C729 /* TribeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TribeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC2E69952C68C1DD00B1C729 /* TribeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TribeTests.swift; sourceTree = "<group>"; };
 		EC56CBEB2C6943CD00D2E9F1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		EC56CBED2C69464800D2E9F1 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		EC56CBEF2C69487D00D2E9F1 /* DownloadFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFailedView.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		EC56CBF32C694A0E00D2E9F1 /* ImageDownloadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadPresenter.swift; sourceTree = "<group>"; };
 		EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadScene.swift; sourceTree = "<group>"; };
 		EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadObserver.swift; sourceTree = "<group>"; };
+		EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		EC2E69942C68C1DD00B1C729 /* TribeTests */ = {
 			isa = PBXGroup;
 			children = (
-				EC2E69952C68C1DD00B1C729 /* TribeTests.swift */,
+				EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */,
 			);
 			path = TribeTests;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2E69962C68C1DD00B1C729 /* TribeTests.swift in Sources */,
+				EC56CBFA2C69661900D2E9F1 /* ImageDownloadPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

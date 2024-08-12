@@ -12,21 +12,39 @@ final class ImageDownloadPresenter {
     
     weak var scene: ImageDownloadScene?
     
-    func perform(_ action: ImageDownload.Action) {
-        switch action {
-        case .downloadImage:
-            downloadImage()
+    struct DependencyContainer {
+        let visualInspectionTimeout: TimeInterval
+        let waitingForConnectivityTimeout: TimeInterval
+        let networkOperationPerformer: NetworkOperationPerforming
+        
+        init(visualInspectionTimeout: TimeInterval = ImageDownload.Constant.visualInspectionTimeout,
+             waitingForConnectivityTimeout: TimeInterval = ImageDownload.Constant.waitingForConnectivityTimeout,
+             networkOperationPerformer: NetworkOperationPerforming = NetworkOperationPerformer()) {
+            self.visualInspectionTimeout = visualInspectionTimeout
+            self.waitingForConnectivityTimeout = waitingForConnectivityTimeout
+            self.networkOperationPerformer = networkOperationPerformer
         }
     }
     
-    private func downloadImage() {
-        Task { @MainActor in
-            await informWaitingForConnectivity(timeout: ImageDownload.Constant.visualInspectionTimeout)
-            await NetworkOperationPerformer()
-                .perform(withinSeconds: ImageDownload.Constant.downloadTimeout) { [weak self] in
-                    await self?.attemptToDownloadImage()
-                }
+    private let dependencyContainer: DependencyContainer
+    
+    init(dependencyContainer: DependencyContainer = .init()) {
+        self.dependencyContainer = dependencyContainer
+    }
+    
+    func perform(_ action: ImageDownload.Action) async {
+        switch action {
+        case .downloadImage:
+            await downloadImage()
         }
+    }
+    
+    private func downloadImage() async {
+        await informWaitingForConnectivity(timeout: dependencyContainer.visualInspectionTimeout)
+        await dependencyContainer.networkOperationPerformer
+            .perform(withinSeconds: ImageDownload.Constant.downloadTimeout) { [weak self] in
+                await self?.attemptToDownloadImage()
+            }
     }
     
     private func attemptToDownloadImage() async {
@@ -41,9 +59,10 @@ final class ImageDownloadPresenter {
     }
     
     private func informWaitingForConnectivity(timeout: TimeInterval) async {
-        try? await Task.sleep(for: .seconds(ImageDownload.Constant.waitingForConnectivityTimeout))
+        let waitingForConnectivityTimeout = dependencyContainer.waitingForConnectivityTimeout
+        try? await Task.sleep(for: .seconds(waitingForConnectivityTimeout))
         scene?.perform(.new(viewModel: .init(state: .stillLoading)))
-        try? await waitForVisualInspection(timeout: timeout - ImageDownload.Constant.waitingForConnectivityTimeout)
+        try? await waitForVisualInspection(timeout: timeout - waitingForConnectivityTimeout)
     }
     
     /// This method allows for the loading screen to be shown for 5 seconds to allow for enough time to visually test the behavior.

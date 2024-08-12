@@ -8,7 +8,5 @@
 import Foundation
 
 protocol ImageDownloadScene: AnyObject {
-    var viewModel: ImageDownload.ViewModel { get }
-    
     func perform(_ update: ImageDownload.Update)
 }

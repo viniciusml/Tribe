@@ -13,13 +13,13 @@ enum ImageDownload {
         case downloadImage
     }
     
-    enum Update {
+    enum Update: Equatable {
         case new(viewModel: ViewModel)
     }
     
-    struct ViewModel {
+    struct ViewModel: Equatable {
         
-        enum State {
+        enum State: Equatable {
             case loading
             case stillLoading
             case loaded(Data)
