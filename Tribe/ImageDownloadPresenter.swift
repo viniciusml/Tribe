@@ -13,16 +13,21 @@ final class ImageDownloadPresenter {
     weak var scene: ImageDownloadScene?
     
     struct DependencyContainer {
+        typealias ImageDownloadAction = (URLRequest, (URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
+        
         let visualInspectionTimeout: TimeInterval
         let waitingForConnectivityTimeout: TimeInterval
         let networkOperationPerformer: NetworkOperationPerforming
+        let imageDownloadAction: ImageDownloadAction
         
         init(visualInspectionTimeout: TimeInterval = ImageDownload.Constant.visualInspectionTimeout,
              waitingForConnectivityTimeout: TimeInterval = ImageDownload.Constant.waitingForConnectivityTimeout,
-             networkOperationPerformer: NetworkOperationPerforming = NetworkOperationPerformer()) {
+             networkOperationPerformer: NetworkOperationPerforming = NetworkOperationPerformer(),
+             imageDownloadAction: @escaping ImageDownloadAction = URLSession.shared.data) {
             self.visualInspectionTimeout = visualInspectionTimeout
             self.waitingForConnectivityTimeout = waitingForConnectivityTimeout
             self.networkOperationPerformer = networkOperationPerformer
+            self.imageDownloadAction = imageDownloadAction
         }
     }
     
@@ -49,7 +54,7 @@ final class ImageDownloadPresenter {
     
     private func attemptToDownloadImage() async {
         do {
-            let result = try await URLSession.shared.data(for: URLRequest(url: ImageDownload.Constant.imageURL))
+            let result = try await dependencyContainer.imageDownloadAction(URLRequest(url: ImageDownload.Constant.imageURL), nil)
             
             scene?.perform(.new(viewModel: .init(state: .loaded(result.0))))
         } catch {
