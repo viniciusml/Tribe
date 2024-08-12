@@ -50,6 +50,20 @@ final class ImageDownloadPresenterTests: XCTestCase {
         ])
         XCTAssertEqual(networkOperationPerformerSpy.log, [.perform(2.0)])
     }
+    
+    func test_downloadImage_withSuccessNetworkCompletion_updatesWithData() async throws {
+        let imageData = try XCTUnwrap("anyData".data(using: .utf8))
+        let imageDownloadAction = ImageDownloadActionStub(stubbed: .success((imageData, URLResponse())))
+        let (sut, scene) = makeSUT(imageDownloadAction: imageDownloadAction)
+        
+        await sut.perform(.downloadImage)
+        
+        XCTAssertEqual(scene.log, [
+            .performUpdate(.new(viewModel: .init(state: .stillLoading))),
+            .performUpdate(.new(viewModel: .init(state: .loaded(imageData))))
+        ])
+        XCTAssertEqual(networkOperationPerformerSpy.log, [.perform(2.0)])
+    }
 }
 
 private extension ImageDownloadPresenterTests {
