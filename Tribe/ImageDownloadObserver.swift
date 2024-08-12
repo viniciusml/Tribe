@@ -10,9 +10,9 @@ import Foundation
 final class ImageDownloadObserver: ObservableObject {
     
     private(set) var viewModel: ImageDownload.ViewModel = .init(state: .loading)
-    private let presenter: ImageDownloadPresenter
+    private let presenter: ImageDownloadPresenting
     
-    init(presenter: ImageDownloadPresenter) {
+    init(presenter: ImageDownloadPresenting) {
         self.presenter = presenter
     }
     

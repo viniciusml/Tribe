@@ -20,6 +20,7 @@
 		EC56CBF62C694D9C00D2E9F1 /* ImageDownloadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */; };
 		EC56CBF82C694E1300D2E9F1 /* ImageDownloadObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */; };
 		EC56CBFA2C69661900D2E9F1 /* ImageDownloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */; };
+		EC56CBFC2C6A1BF600D2E9F1 /* ImageDownloadObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC56CBFB2C6A1BF600D2E9F1 /* ImageDownloadObserverTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		EC56CBF52C694D9C00D2E9F1 /* ImageDownloadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadScene.swift; sourceTree = "<group>"; };
 		EC56CBF72C694E1300D2E9F1 /* ImageDownloadObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadObserver.swift; sourceTree = "<group>"; };
 		EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadPresenterTests.swift; sourceTree = "<group>"; };
+		EC56CBFB2C6A1BF600D2E9F1 /* ImageDownloadObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadObserverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				EC56CBF92C69661900D2E9F1 /* ImageDownloadPresenterTests.swift */,
+				EC56CBFB2C6A1BF600D2E9F1 /* ImageDownloadObserverTests.swift */,
 			);
 			path = TribeTests;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC56CBFC2C6A1BF600D2E9F1 /* ImageDownloadObserverTests.swift in Sources */,
 				EC56CBFA2C69661900D2E9F1 /* ImageDownloadPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
