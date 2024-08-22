@@ -31,10 +31,8 @@ struct ContentView: View {
                     DownloadFailedView()
                 }
             }
-        }.onAppear {
-            Task { @MainActor in
-                await observer.perform(.downloadImage)
-            }
+        }.task {
+            await observer.perform(.downloadImage)
         }
     }
 }
