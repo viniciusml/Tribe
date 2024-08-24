@@ -41,17 +41,22 @@ final class ImageDownloadPresenter: ImageDownloadPresenting {
         do {
             let result = try await dependencyContainer.imageDownloadAction(URLRequest(url: ImageDownload.Constant.imageURL), nil)
             
-            scene?.perform(.new(viewModel: .init(state: .loaded(result.0))))
+            await performUpdateOnMainThread(.loaded(result.0))
         } catch {
             
-            scene?.perform(.new(viewModel: .init(state: .failed)))
+            await performUpdateOnMainThread(.failed)
         }
+    }
+    
+    @MainActor
+    private func performUpdateOnMainThread(_ state: ImageDownload.ViewModel.State) {
+        scene?.perform(.new(viewModel: .init(state: state)))
     }
     
     private func informWaitingForConnectivity(timeout: TimeInterval) async {
         let waitingForConnectivityTimeout = dependencyContainer.waitingForConnectivityTimeout
         try? await Task.sleep(for: .seconds(waitingForConnectivityTimeout))
-        scene?.perform(.new(viewModel: .init(state: .stillLoading)))
+        await performUpdateOnMainThread(.stillLoading)
         try? await waitForVisualInspection(timeout: timeout - waitingForConnectivityTimeout)
     }
     
